@@ -3,8 +3,10 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  margin: 20px 0;
-  height: 40px;
+  height: 60px;
+  padding: 20px 0;
+  z-index: 99999;
+  background: #ffff;
   border-bottom: 1px solid lightgrey;
   .container {
     display: flex;

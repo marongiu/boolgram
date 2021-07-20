@@ -7,7 +7,25 @@
   \************************/
 /***/ (() => {
 
+var app = new Vue({
+  el: '#root',
+  data: {
+    profiles: [],
+    skeleton: true
+  },
+  mounted: function mounted() {
+    var _this = this;
 
+    axios.get('https://flynn.boolean.careers/exercises/api/boolgram/profiles').then(function (response) {
+      _this.profiles = response.data;
+      console.log(_this.profiles.profile_name);
+      setTimeout(function () {
+        _this.skeleton = false;
+      }, 3000);
+    });
+  },
+  methods: {}
+});
 
 /***/ }),
 

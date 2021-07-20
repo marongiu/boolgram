@@ -7,6 +7,7 @@
   <title>Boolgram</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./assets/css/master.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -33,13 +34,39 @@
       </div>
     </header>
 
-    <main>
+    <main class="container">
       <div class="main-left">
         <div class="stories">
-
+          <div class="stories-profile">
+            <div v-for="profile in profiles">
+              <img :src="profile.profile_picture" alt="">
+              <p>{{profile.profile_name}}</p>
+            </div>
+          </div>
         </div>
 
         <div class="posts">
+          <!-- Skeleton <div v-if="skeleton == true" class="card"></div>
+         -->
+
+         <!-- Testa post -->
+          <div class="posts-head">
+            <div class="posts-profile">
+              <div class="posts-profile-left">
+                <img src="./assets/img/profile.jpg"  width="24">
+                <p>prova</p>
+              </div>
+              <div class="posts-profile-right">
+                <svg aria-label="Altre opzioni" class="_8-yf5 " fill="#262626" height="16" role="img" viewBox="0 0 48 48" width="16"><circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Immagine -->
+
+          <div class="posts-image">
+            <img src="http://lorempixel.com/700/500/" alt="">
+          </div>
 
         </div>
       </div>

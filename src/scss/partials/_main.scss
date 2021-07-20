@@ -1,0 +1,49 @@
+main {
+  padding-top: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  .main-left {
+    width: 80%;
+    height: 1000px;
+
+    .stories {
+      background: #ffff;
+      border: 1px solid lightgrey;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: center;
+
+      .stories-profile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 15px;
+
+        div {
+          margin: 0 10px;
+        }
+
+        img {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          border: 2px solid #e75057;
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+  .main-right {
+    background: red;
+    width: 20%;
+    height: 300px;
+  }
+
+  @import '_posts.scss';
+
+}
