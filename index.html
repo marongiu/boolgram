@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boolgram</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./assets/css/master.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -13,48 +14,49 @@
 
   <div id="root">
 
-    <header>
-      <div class="container">
-        <div class="brand"><img src="./assets/img/logo.png" alt=""></div>
-        <div class="search"><input placeholder="Cerca" type="text" value=""></div>
-        <div class="buttons">
-          <ul>
-            <li>
-              <a>
-                <svg aria-label="Feed attività" class="_8-yf5 " fill="#262626" height="22" role="img" viewBox="0 0 48 48" width="22">
-                  <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
-                  </path>
-                </svg>
-              </a>
-            </li>
-            <li><a href=""><svg aria-label="Home" class="_8-yf5 " fill="#262626" height="22" role="img" viewBox="0 0 48 48" width="22"><path d="M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z"></path></svg></a></li>
-            <li><img src="./assets/img/profile.jpg"  width="24"></li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <navbar></navbar>
 
+
+    <!-- Inizio main -->
     <main class="container">
+      <!-- Parte sinistra -->
       <div class="main-left">
+        <!-- Storie -->
         <div class="stories">
           <div class="stories-profile">
-            <div v-for="profile in profiles">
+            <div  v-if="skeleton" class="skeleton-stories" v-for="profile in profiles">
+              <span></span>
+            </div>
+            <div class="btn btn-primary" data-toggle="modal" data-target="#stories"  @click="showStories(profile)" v-if="skeleton == false" v-for="profile in profiles">
               <img :src="profile.profile_picture" alt="">
-              <p>{{profile.profile_name}}</p>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="stories" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <img :src="storiesprofile" alt="">
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="posts">
-          <!-- Skeleton <div v-if="skeleton == true" class="card"></div>
-         -->
+  <!-- Skeleton post -->
+        <div v-if="skeleton" class="card"></div>
 
-         <!-- Testa post -->
-          <div class="posts-head">
+        <!-- Posts -->
+        <div  v-if="skeleton == false" class="posts"  v-for="post in posts">
+
+
+          <!-- Testa post -->
+          <div class="posts-head" >
             <div class="posts-profile">
               <div class="posts-profile-left">
-                <img src="./assets/img/profile.jpg"  width="24">
-                <p>prova</p>
+                <img :src="post.profile_picture"  width="24">
+                <p>{{post.profile_name}}</p>
               </div>
               <div class="posts-profile-right">
                 <svg aria-label="Altre opzioni" class="_8-yf5 " fill="#262626" height="16" role="img" viewBox="0 0 48 48" width="16"><circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle></svg>
@@ -65,22 +67,99 @@
           <!-- Immagine -->
 
           <div class="posts-image">
-            <img src="http://lorempixel.com/700/500/" alt="">
+            <img :src="post.post_image" alt="">
           </div>
 
+          <!-- Commenti -->
+
+          <div class="posts-footer" >
+            <div class="posts-buttons">
+
+              <!-- Like Commento -->
+              <span><i class="fas fa-heart" id="hearth"></i></span>
+              <span><i class="far fa-comment-dots"></i></span>
+
+            </div>
+            <!-- Like persone -->
+            <div class="posts-likes">
+
+              <span  v-for="(like,i) in post.likes" v-if="i == 0"><img :src="like.profile_picture" alt="">
+                <span>piace a <strong>{{like.username}}</strong> e altri <strong>{{like.username.length}}</strong></span>
+              </span>
+
+            </div>
+
+            <!-- Commenti -->
+            <div class="posts-comments" >
+              <div class="posts-text"><strong>{{post.profile_name}}</strong> {{post.post_text}}</div>
+
+              <p class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" v-if="(post.comments.length)" id="showcomment" @click="showComment(post.comments)">Mostra tutti e <span >{{post.comments.length}}</span> i commenti</p>
+
+              <div class="comments-user" v-for="(comment,i) in post.comments" v-if="i <= 2">
+
+
+                <span><strong>{{comment.username}}</strong></span>
+                <span>{{comment.text}}</span>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title text-align-center" id="exampleModalLabel">Commenti</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p  v-for="comment in allComments"><strong>{{comment.username}}</strong> {{comment.text}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
+      <!-- Lato destro -->
       <div class="main-right">
-        <div class="account-list">
+        <!-- Account personale -->
+        <div class="main-account">
+          <span><img src="./assets/img/profile.jpg" alt="" width="56"></span>
+          <span>username</span>
+        </div>
 
+        <!-- Lista suggerimenti -->
+        <div class="account-list">
+          <div class="advice">
+            <p>Suggerimenti per te</p>
+          </div>
+          <div class="advice-account">
+
+            <!-- Skeleton -->
+            <div class="skeleton-advice" v-if="skeleton" v-for="profile in profiles">
+              <div id="skeleton-account"><span></span></div>
+              <div id="skeleton-account-text"></div>
+            </div>
+
+<!-- Lista suggeriti -->
+            <div v-if="skeleton == false" v-for="profile in profiles" class="account-list">
+              <div class="account-list-image"><img :src="profile.profile_picture"></div>
+              <span> <strong>{{profile.profile_name}}</strong></span>
+            </div>
+          </div>
         </div>
       </div>
+
     </main>
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="assets/js/main.js" charset="utf-8"></script>
 </body>
 </html>

@@ -4,8 +4,7 @@ main {
   justify-content: space-between;
 
   .main-left {
-    width: 80%;
-    height: 1000px;
+    width: 75%;
 
     .stories {
       background: #ffff;
@@ -16,34 +15,78 @@ main {
       align-items: center;
 
       .stories-profile {
+        height: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 0 15px;
+        padding: 0 10px;
+        overflow-x: hidden;
 
         div {
           margin: 0 10px;
         }
 
         img {
-          width: 56px;
-          height: 56px;
+          width: 62px;
+          height: 62px;
           border-radius: 50%;
-          border: 2px solid #e75057;
+          border: 3px solid #e75057;
+          cursor: pointer;
+          object-fit: cover;
+          animation: stories 1s infinite;
         }
 
         p {
+          font-size: 13px;
           text-align: center;
         }
       }
     }
   }
   .main-right {
-    background: red;
-    width: 20%;
+    margin-left: 20px;
+    width: calc(25% - 20px);
     height: 300px;
+
+    .main-account {
+      height: 150px;
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    .advice-account {
+      .account-list {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        .account-list-image {
+          margin-right: 20px;
+          img {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        span {
+          font-size: 13px;
+        }
+      }
+    }
   }
 
   @import '_posts.scss';
 
+}
+
+
+@keyframes stories {
+  0% {
+    border: 3px solid orange;
+  }
 }

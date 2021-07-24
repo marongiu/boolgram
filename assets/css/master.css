@@ -26,12 +26,28 @@ body {
   margin: 0 auto;
 }
 
+.hearth {
+  color: red;
+}
+
+.btn-primary {
+  background-color: #ffff !important;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 70px;
   padding: 20px 0;
   z-index: 99999;
   background: #ffff;
@@ -64,8 +80,7 @@ main {
   justify-content: space-between;
 }
 main .main-left {
-  width: 80%;
-  height: 1000px;
+  width: 75%;
 }
 main .main-left .stories {
   background: #ffff;
@@ -76,27 +91,61 @@ main .main-left .stories {
   align-items: center;
 }
 main .main-left .stories .stories-profile {
+  height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 10px;
+  overflow-x: hidden;
 }
 main .main-left .stories .stories-profile div {
   margin: 0 10px;
 }
 main .main-left .stories .stories-profile img {
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  border: 2px solid #e75057;
+  border: 3px solid #e75057;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-animation: stories 1s infinite;
+          animation: stories 1s infinite;
 }
 main .main-left .stories .stories-profile p {
+  font-size: 13px;
   text-align: center;
 }
 main .main-right {
-  background: red;
-  width: 20%;
+  margin-left: 20px;
+  width: calc(25% - 20px);
   height: 300px;
+}
+main .main-right .main-account {
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+main .main-right .main-account span {
+  margin-right: 10px;
+}
+main .main-right .advice-account .account-list {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+main .main-right .advice-account .account-list .account-list-image {
+  margin-right: 20px;
+}
+main .main-right .advice-account .account-list .account-list-image img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .main-right .advice-account .account-list span {
+  font-size: 13px;
 }
 main .posts {
   margin-top: 50px;
@@ -105,8 +154,9 @@ main .posts {
   width: 100%;
 }
 main .posts .posts-head {
+  padding: 20px;
   height: 60px;
-  background: yellow;
+  background: #ffff;
 }
 main .posts .posts-head .posts-profile {
   height: 100%;
@@ -118,20 +168,86 @@ main .posts .posts-head .posts-profile .posts-profile-left {
   display: flex;
   align-items: center;
 }
-main .posts .posts-head .posts-profile .posts-profile-left * {
-  margin: 0 10px;
+main .posts .posts-head .posts-profile .posts-profile-left img {
+  width: 40px;
+  height: 40px;
+  border: 2px solid red;
+  border-radius: 50%;
+}
+main .posts .posts-head .posts-profile .posts-profile-left p {
+  margin-left: 10px;
 }
 main .posts .posts-image {
   height: 500px;
 }
 main .posts .posts-image img {
+  padding: 0;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .posts .posts-footer {
+  padding: 20px;
+}
+main .posts .posts-footer .posts-buttons * {
+  cursor: pointer;
+  font-size: 24px;
+  color: inherit;
+}
+main .posts .posts-footer .posts-buttons span:last-child {
+  margin-left: 10px;
+}
+main .posts .posts-footer .posts-likes {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+main .posts .posts-footer .posts-likes img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+main .posts .posts-footer .posts-likes span {
+  vertical-align: middle;
+}
+main .posts .posts-footer .posts-comments #showcomment {
+  margin: 10px 0;
+  color: #9b9b9b;
+  cursor: pointer;
+}
+main .posts .posts-footer .posts-comments .posts-text {
+  margin-top: 10px;
+}
+main .posts .posts-footer .posts-comments .all-comments {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+main .posts .posts-footer .posts-comments .all-comments .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffff;
+  width: 300px;
+  height: 300px;
 }
 
+@-webkit-keyframes stories {
+  0% {
+    border: 3px solid orange;
+  }
+}
+
+@keyframes stories {
+  0% {
+    border: 3px solid orange;
+  }
+}
 :root {
   --card-padding: 24px;
-  --card-height: 340px;
+  --card-height: 500px;
   --card-skeleton: linear-gradient(lightgrey var(--card-height), transparent 0);
   --avatar-size: 32px;
   --avatar-position: var(--card-padding) var(--card-padding);
@@ -155,8 +271,8 @@ main .posts .posts-image img {
 }
 
 /*
- * Card Skeleton for Loading
- */
+* Card Skeleton for Loading
+*/
 .card {
   width: 100%;
   margin: 10px 0;
@@ -188,6 +304,128 @@ main .posts .posts-image img {
     background-position: 350% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position), var(--avatar-position), var(--footer-position), 0 0;
   }
 }
-/*
- * Demo Stuff
- */
+.skeleton-stories {
+  position: relative;
+  height: 62px;
+  width: 62px;
+  border-radius: 50%;
+  background: linear-gradient(lightgrey var(--card-height), transparent 0);
+}
+.skeleton-stories span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: loadingstories 1s infinite;
+          animation: loadingstories 1s infinite;
+}
+
+.skeleton-advice {
+  display: flex;
+  align-items: center;
+}
+.skeleton-advice div#skeleton-account {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: lightgrey;
+  margin: 10px 0px;
+}
+.skeleton-advice div#skeleton-account span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: loadingstories 1s infinite;
+          animation: loadingstories 1s infinite;
+}
+.skeleton-advice div#skeleton-account-text {
+  width: 50%;
+  margin-left: 10px;
+  height: 10px;
+  background: #d3d3d3;
+  -webkit-animation: loadingtext 1.5s infinite;
+          animation: loadingtext 1.5s infinite;
+}
+
+.modal .modal-title {
+  width: 100%;
+  text-align: center;
+}
+.modal .modal-body p {
+  margin: 5px 0;
+}
+
+#stories {
+  background: #1a1a1a;
+}
+#stories .modal-content {
+  background: none;
+  border: none;
+  width: 600px;
+  height: 600px;
+}
+#stories .modal-content .modal-body {
+  width: 100%;
+  height: 100%;
+}
+#stories .modal-content .modal-body img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@-webkit-keyframes loadingstories {
+  0% {
+    background: linear-gradient(lightgrey, transparent 0);
+  }
+}
+
+@keyframes loadingstories {
+  0% {
+    background: linear-gradient(lightgrey, transparent 0);
+  }
+}
+@-webkit-keyframes loadingtext {
+  0% {
+    background: #ffff;
+  }
+}
+@keyframes loadingtext {
+  0% {
+    background: #ffff;
+  }
+}
+@media all and (max-width: 1300px) {
+  .main-left {
+    width: 100% !important;
+  }
+
+  .main-right {
+    display: none;
+  }
+
+  .container {
+    width: 95%;
+  }
+}
+@media all and (max-width: 800px) {
+  .search {
+    display: none;
+  }
+
+  .container {
+    max-width: 100% !important;
+    margin: 0;
+  }
+}

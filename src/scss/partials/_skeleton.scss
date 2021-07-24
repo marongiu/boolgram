@@ -1,7 +1,7 @@
 
 :root {
   --card-padding: 24px;
-  --card-height: 340px;
+  --card-height: 500px;
   --card-skeleton: linear-gradient(lightgrey var(--card-height), transparent 0);
 
   --avatar-size: 32px;
@@ -30,8 +30,8 @@
 }
 
 /*
- * Card Skeleton for Loading
- */
+* Card Skeleton for Loading
+*/
 
 .card {
   width: 100%; //demoù
@@ -47,38 +47,38 @@
     box-shadow: 0 10px 45px rgba(0,0,0, .1);
 
     background-image:
-      linear-gradient(
-        90deg,
-        rgba(lightgrey, 0) 0,
-        rgba(lightgrey, .8) 50%,
-        rgba(lightgrey, 0) 100%
-      ),                          //animation blur
-      var(--title-skeleton),      //title
-      var(--desc-line-skeleton),  //desc1
-      var(--desc-line-skeleton),  //desc2
-      var(--avatar-skeleton),     //avatar
-      var(--footer-skeleton),     //footer bar
-      var(--card-skeleton)        //card
+    linear-gradient(
+    90deg,
+    rgba(lightgrey, 0) 0,
+    rgba(lightgrey, .8) 50%,
+    rgba(lightgrey, 0) 100%
+    ),                          //animation blur
+    var(--title-skeleton),      //title
+    var(--desc-line-skeleton),  //desc1
+    var(--desc-line-skeleton),  //desc2
+    var(--avatar-skeleton),     //avatar
+    var(--footer-skeleton),     //footer bar
+    var(--card-skeleton)        //card
     ;
 
     background-size:
-      var(--blur-size),
-      var(--title-width) var(--title-height),
-      var(--desc-line-1-width) var(--desc-line-height),
-      var(--desc-line-2-width) var(--desc-line-height),
-      var(--avatar-size) var(--avatar-size),
-      100% var(--footer-height),
-      100% 100%
+    var(--blur-size),
+    var(--title-width) var(--title-height),
+    var(--desc-line-1-width) var(--desc-line-height),
+    var(--desc-line-2-width) var(--desc-line-height),
+    var(--avatar-size) var(--avatar-size),
+    100% var(--footer-height),
+    100% 100%
     ;
 
     background-position:
-      -150% 0,                      //animation
-      var(--title-position),        //title
-      var(--desc-line-1-position),  //desc1
-      var(--desc-line-2-position),  //desc2
-      var(--avatar-position),       //avatar
-      var(--footer-position),       //footer bar
-      0 0                           //card
+    -150% 0,                      //animation
+    var(--title-position),        //title
+    var(--desc-line-1-position),  //desc1
+    var(--desc-line-2-position),  //desc2
+    var(--avatar-position),       //avatar
+    var(--footer-position),       //footer bar
+    0 0                           //card
     ;
 
     background-repeat: no-repeat;
@@ -89,18 +89,112 @@
 @keyframes loading {
   to {
     background-position:
-      350% 0,
-      var(--title-position),
-      var(--desc-line-1-position),
-      var(--desc-line-2-position),
-      var(--avatar-position),
-      var(--footer-position),
-      0 0
+    350% 0,
+    var(--title-position),
+    var(--desc-line-1-position),
+    var(--desc-line-2-position),
+    var(--avatar-position),
+    var(--footer-position),
+    0 0
     ;
   }
 }
 
 
-/*
- * Demo Stuff
- */
+.skeleton-stories {
+  position: relative;
+  height: 62px;
+  width: 62px;
+  border-radius: 50%;
+  background: linear-gradient(lightgrey var(--card-height), transparent 0);
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+    background: #fff;
+    border-radius: 50%;
+    animation: loadingstories 1s infinite;
+  }
+}
+
+.skeleton-advice {
+  display: flex;
+  align-items: center;
+  div#skeleton-account {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background:lightgrey;
+    margin: 10px 0px;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 30px;
+      width: 30px;
+      background: #fff;
+      border-radius: 50%;
+      animation: loadingstories 1s infinite;
+    }
+  }
+
+  div#skeleton-account-text {
+    width: 50%;
+    margin-left: 10px;
+    height: 10px;
+    background: #d3d3d3;
+    animation: loadingtext 1.5s infinite;
+  }
+}
+
+.modal {
+  .modal-title {
+    width: 100%;
+    text-align: center;
+  }
+  .modal-body {
+    p {
+      margin: 5px 0;
+    }
+  }
+
+}
+
+#stories {
+  background: #1a1a1a;
+
+  .modal-content {
+    background: none;
+    border: none;
+    width: 600px;
+    height: 600px;
+    .modal-body {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+    }
+  }
+}
+
+@keyframes loadingstories {
+  0% {
+    background: linear-gradient(lightgrey , transparent 0);
+  }
+}
+
+@keyframes loadingtext {
+  0% {
+    background: #ffff;
+  }
+}
