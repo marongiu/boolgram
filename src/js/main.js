@@ -29,7 +29,9 @@ let app = new Vue({
     skeleton: true,
     like: false,
     allComments: [],
-    storiesprofile: null
+    storiesprofile: null,
+    hiddenstory: null,
+    next: false
 
 
   },
@@ -46,12 +48,12 @@ let app = new Vue({
       this.posts = response[1].data;
     })
     .catch(error => {
-        console.log(error);
-      })
-      .finally(() => {
-        // hide the skeleton
-        this.skeletonTime()
-      });
+      console.log(error);
+    })
+    .finally(() => {
+      // hide the skeleton
+      this.skeletonTime()
+    });
 
 
   },
@@ -59,19 +61,27 @@ let app = new Vue({
 
   methods: {
     skeletonTime() {
-      setTimeout(() => {
-        this.skeleton = false;
 
+      setTimeout(() => {
+        // hide skeleton
+        this.skeleton = false;
+        // timeout
       },2000);
     },
 
 
     showComment(comment) {
+
+      // comments
       this.allComments = comment;
     },
 
     showStories(profile) {
+
+      // picture of story
       this.storiesprofile = profile.profile_picture;
+      console.log(profile);
+
 
     }
   },

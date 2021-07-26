@@ -1,5 +1,5 @@
 main {
-  padding-top: 100px;
+  padding: 100px 0;
   display: flex;
   justify-content: space-between;
 
@@ -13,6 +13,13 @@ main {
       height: 150px;
       display: flex;
       align-items: center;
+      position: relative;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        width: 0;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+      }
 
       .stories-profile {
         height: 100%;
@@ -20,7 +27,7 @@ main {
         justify-content: space-around;
         align-items: center;
         padding: 0 10px;
-        overflow-x: hidden;
+        position: absolute;
 
         div {
           margin: 0 10px;
@@ -40,6 +47,7 @@ main {
           font-size: 13px;
           text-align: center;
         }
+
       }
     }
   }
@@ -77,6 +85,10 @@ main {
           font-size: 13px;
         }
       }
+    }
+
+    small {
+      color: #c7c7c7;
     }
   }
 

@@ -18,7 +18,9 @@ var app = new Vue({
     skeleton: true,
     like: false,
     allComments: [],
-    storiesprofile: null
+    storiesprofile: null,
+    hiddenstory: null,
+    next: false
   },
   mounted: function mounted() {
     var _this = this;
@@ -41,14 +43,18 @@ var app = new Vue({
       var _this2 = this;
 
       setTimeout(function () {
-        _this2.skeleton = false;
+        // hide skeleton
+        _this2.skeleton = false; // timeout
       }, 2000);
     },
     showComment: function showComment(comment) {
+      // comments
       this.allComments = comment;
     },
     showStories: function showStories(profile) {
+      // picture of story
       this.storiesprofile = profile.profile_picture;
+      console.log(profile);
     }
   },
   created: function created() {}

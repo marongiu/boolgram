@@ -75,7 +75,7 @@ header .container .buttons ul li {
 }
 
 main {
-  padding-top: 100px;
+  padding: 100px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -89,6 +89,14 @@ main .main-left .stories {
   height: 150px;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow-x: auto;
+}
+main .main-left .stories::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
 }
 main .main-left .stories .stories-profile {
   height: 100%;
@@ -96,7 +104,7 @@ main .main-left .stories .stories-profile {
   justify-content: space-around;
   align-items: center;
   padding: 0 10px;
-  overflow-x: hidden;
+  position: absolute;
 }
 main .main-left .stories .stories-profile div {
   margin: 0 10px;
@@ -146,6 +154,9 @@ main .main-right .advice-account .account-list .account-list-image img {
 }
 main .main-right .advice-account .account-list span {
   font-size: 13px;
+}
+main .main-right small {
+  color: #c7c7c7;
 }
 main .posts {
   margin-top: 50px;
@@ -371,10 +382,25 @@ main .posts .posts-footer .posts-comments .all-comments .modal {
 #stories .modal-content {
   background: none;
   border: none;
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 800px;
+}
+#stories .modal-content .modal-header {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 999;
+  border: 0;
+}
+#stories .modal-content .modal-header img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
 }
 #stories .modal-content .modal-body {
+  position: relative;
   width: 100%;
   height: 100%;
 }

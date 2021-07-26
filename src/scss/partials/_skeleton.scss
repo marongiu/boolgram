@@ -1,4 +1,3 @@
-
 :root {
   --card-padding: 24px;
   --card-height: 500px;
@@ -172,9 +171,25 @@
   .modal-content {
     background: none;
     border: none;
-    width: 600px;
-    height: 600px;
+    width: 450px;
+    height: 800px;
+
+    .modal-header {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      z-index: 999;
+      border: 0;
+      img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+    }
     .modal-body {
+      position: relative;
       width: 100%;
       height: 100%;
       img {
