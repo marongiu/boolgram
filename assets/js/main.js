@@ -7,9 +7,6 @@
   \************************/
 /***/ (() => {
 
-Vue.component('navbar', {
-  template: "<header>\n  <div class=\"container\">\n  <div class=\"brand\"><img src=\"./assets/img/logo.png\" alt=\"\"></div>\n  <div class=\"search\"><input placeholder=\"Cerca\" type=\"text\" value=\"\"></div>\n  <div class=\"buttons\">\n  <ul>\n  <li>\n  <a>\n  <svg aria-label=\"Feed attivit\xE0\" class=\"_8-yf5 \" fill=\"#262626\" height=\"22\" role=\"img\" viewBox=\"0 0 48 48\" width=\"22\">\n  <path d=\"M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z\">\n  </path>\n  </svg>\n  </a>\n  </li>\n  <li><a href=\"\"><svg aria-label=\"Home\" class=\"_8-yf5 \" fill=\"#262626\" height=\"22\" role=\"img\" viewBox=\"0 0 48 48\" width=\"22\"><path d=\"M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z\"></path></svg></a></li>\n  <li><img src=\"./assets/img/profile.jpg\"  width=\"24\"></li>\n  </ul>\n  </div>\n  </div>\n  </header>"
-});
 var app = new Vue({
   el: '#root',
   data: {
@@ -31,6 +28,7 @@ var app = new Vue({
     axios.all([axiosrequest1, axiosrequest2]).then(function (response) {
       _this.profiles = response[0].data;
       _this.posts = response[1].data;
+      console.log(_this.posts);
     })["catch"](function (error) {
       console.log(error);
     })["finally"](function () {

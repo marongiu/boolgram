@@ -393,6 +393,8 @@ main .posts .posts-footer .posts-comments .all-comments .modal {
   border: 0;
 }
 #stories .modal-content .modal-header img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 42px;
   height: 42px;
   border-radius: 50%;
